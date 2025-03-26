@@ -66,7 +66,7 @@ export const Locations = () => {
               <div
                 className={`absolute bottom-8 ${
                   location.name === 'Bamyan'
-                    ? 'md:left-10 left-0 right-0'
+                    ? 'md:left-10 left-35'
                     : 'left-0 right-0'
                 } bg-opacity-50 text-white text-center p-2 font-bold text-3xl`}
               >
