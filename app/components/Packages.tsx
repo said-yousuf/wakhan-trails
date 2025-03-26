@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export const Packages = () => {
   return (
-    <div className="flex flex-col items-center justify-center py-14 text-center">
+    <div className="flex flex-col items-center justify-center  py-14 text-center">
       <p className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 max-w-[90%] sm:max-w-[650px]">
         Our tour packages for you
       </p>
@@ -12,9 +12,9 @@ export const Packages = () => {
         to vibrant cityscapes, perfect for creating unforgettable memories
       </p>
 
-      <div className="flex gap-4">
+      <div className="flex gap-4 flex-col md:flex-row">
         <div className="flex justify-center">
-          <div className="relative bg-[#EDF0F7] rounded-2xl w-[622px] h-[427px] overflow-hidden">
+          <div className="relative bg-[#EDF0F7] rounded-2xl w-full md:w-[622px] h-[427px] overflow-hidden transform transition-transform duration-300 hover:-translate-y-2">
             {/* Text Overlay */}
             <div className="absolute top-10 left-10 z-10 text-left">
               <h2 className="text-2xl font-bold text-black mb-4">
@@ -43,7 +43,7 @@ export const Packages = () => {
         </div>
 
         <div className="flex justify-center">
-          <div className="relative bg-[#EDF0F7] rounded-2xl w-[438px] h-[427px] overflow-hidden">
+          <div className="relative bg-[#EDF0F7] rounded-2xl w-[438px] h-[427px] overflow-hidden transform transition-transform duration-300 hover:-translate-y-2">
             {/* Text Overlay */}
             <div className="absolute bottom-10 left-25 z-10 text-left">
               <h2 className="text-2xl font-bold text-black mb-4 ">

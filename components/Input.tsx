@@ -15,7 +15,7 @@ export const SearchInput = ({
 }: SearchInputProps) => {
   return (
     <div
-      className="relative w-[175.5px] h-[44px] flex items-center 
+      className="relative md:w-[175.5px] w-full h-[44px] flex items-center 
           bg-white border border-white shadow-[0px_1px_2px_rgba(188,188,188,0.24),0px_0px_0px_1px_rgba(0,0,0,0.08)] 
           rounded-full px-4"
     >
