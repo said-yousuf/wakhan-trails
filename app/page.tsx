@@ -10,7 +10,7 @@ import { Tickets } from './components/Tickets';
 
 export default function Home() {
   return (
-    <div className="flex flex-col h-full px-20 py-5">
+    <div className="flex flex-col h-full md:px-20 md:py-5 px-5">
       <Header />
       <Hero />
       <Search />

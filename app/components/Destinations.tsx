@@ -19,6 +19,21 @@ const DestinationsImage = [
     name: 'Tehran',
     imagePath: '/images/iran.png',
   },
+  {
+    id: 4,
+    name: 'Istanbul',
+    imagePath: '/images/turkey.png',
+  },
+  {
+    id: 5,
+    name: 'Dubai',
+    imagePath: '/images/dubai.png',
+  },
+  {
+    id: 6,
+    name: 'Tehran',
+    imagePath: '/images/iran.png',
+  },
 ];
 
 export const Destinations = () => {
@@ -48,13 +63,13 @@ export const Destinations = () => {
       </p>
 
       {/* Image Slider */}
-      <div className="relative flex items-center justify-center space-x-4 w-full max-w-xl">
+      <div className="relative flex items-center h-[430px] justify-center space-x-4 w-full max-w-xl">
         {[
           getPrevIndex(currentIndex),
           currentIndex,
           getNextIndex(currentIndex),
         ].map((index, i) => {
-          const isFocused = i === 1; // Center image is always index 1
+          const isFocused = i === 1;
           return (
             <div
               key={DestinationsImage[index].id}

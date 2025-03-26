@@ -40,8 +40,7 @@ const CloudAnimation: React.FC<CloudAnimationProps> = ({
         initial={{ x: '100%' }}
         animate={{ x: '-100%' }}
         transition={{
-          duration: baseDurationRTL + Math.random() * 10, // Randomly vary duration
-          ease: 'linear',
+          duration: baseDurationRTL + Math.random() * 10,
           repeat: Infinity,
           repeatType: 'loop',
           delay,

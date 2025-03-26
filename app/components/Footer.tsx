@@ -3,54 +3,62 @@ import Image from 'next/image';
 
 export const Footer = () => {
   const date = new Date();
-
   return (
     <footer className="bg-white">
-      <div className="flex flex-col items-center justify-center py-14 text-center">
-        <p className="text-5xl font-bold mb-4 max-w-[600px]">
+      <div className="px-4 py-14 text-center flex flex-col items-center justify-center">
+        <p className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 max-w-full md:max-w-[600px] px-4">
           Your ultimate travel companion
         </p>
-        <p className="text-[16px] font-medium max-w-xl mb-4 text-[#78726D]">
+        <p className="text-sm md:text-base font-medium max-w-full md:max-w-xl mb-6 text-[#78726D] px-4">
           Get exclusive deals on tours only with Wakhan Trails
         </p>
-        <Button iconSrc="/icons/right.png" iconSize={28} width={138}>
+        <Button iconSrc="/icons/right.png" iconSize={24} width={138}>
           Contact us
         </Button>
       </div>
-      <div className="flex items-center justify-between px-4 py-6 border-t border-dashed border-[#D2D2D2]">
-        <Image
-          src="/logo.png"
-          alt="Wakhan Trails"
-          width={113}
-          height={41}
-          priority
-        />
-        <div className="flex flex-row items-center space-x-4">
-          <div className="flex items-center">
+
+      <div className="px-4 py-6 border-t border-dashed border-[#D2D2D2]">
+        <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+          <div className="flex justify-center md:justify-start w-full md:w-auto">
             <Image
-              src="/icons/instagram.png"
-              alt="Instagram"
-              height={20}
-              width={20}
-              className="mr-2"
+              src="/logo.png"
+              alt="Wakhan Trails"
+              width={113}
+              height={41}
+              priority
             />
-            <p className="text-[#78726D] font-bold text-[16px]">Instagram</p>
           </div>
-          <div className="flex items-center">
-            <Image
-              src="/icons/facebook.png"
-              alt="Facebook"
-              height={20}
-              width={20}
-              className="mr-2"
-            />
-            <p className="text-[#78726D] font-bold text-[16px]">Facebook</p>
+
+          <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4 w-full md:w-auto">
+            <div className="flex items-center mb-2 md:mb-0">
+              <Image
+                src="/icons/instagram.png"
+                alt="Instagram"
+                height={20}
+                width={20}
+                className="mr-2"
+              />
+              <p className="text-[#78726D] font-bold text-sm">Instagram</p>
+            </div>
+            <div className="flex items-center cursor-pointer">
+              <Image
+                src="/icons/facebook.png"
+                alt="Facebook"
+                height={20}
+                width={20}
+                className="mr-2"
+              />
+              <p className="text-[#78726D] font-bold text-sm">Facebook</p>
+            </div>
           </div>
+
+          <p className="text-[#78726D] text-sm text-center md:text-right w-full md:w-auto">
+            Wakhan Trails © {date.getFullYear()}
+          </p>
         </div>
-        <p className="text-[#78726D] text-sm">
-          Wakhan Trails © {date.getFullYear()}
-        </p>
       </div>
     </footer>
   );
 };
+
+export default Footer;

@@ -17,9 +17,11 @@ export const Hero = () => {
 
       {/* Clouds */}
       <CloudAnimation
-        countRTL={1}
-        countLTR={2}
-        verticalRange={{ min: 0, max: 50 }}
+        countRTL={4}
+        countLTR={4}
+        verticalRange={{ min: 0, max: 0 }}
+        baseDurationRTL={500}
+        baseDurationLTR={500}
       />
       {/* Text Content */}
       <div className="relative z-10 text-center mt-16">

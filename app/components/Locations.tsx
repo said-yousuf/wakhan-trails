@@ -49,18 +49,18 @@ export const Locations = () => {
 
   return (
     <div className="flex flex-col items-center justify-center py-14 text-center">
-      <p className="text-5xl font-bold mb-4 max-w-[600px]">
+      <p className="text-3xl md:text-5xl font-bold mb-4 max-w-[600px]">
         Discover unforgettable places in Afghanistan
       </p>
-      <p className="text-[16px] font-medium max-w-xl mb-8 text-[#78726D]">
+      <p className="text-[14px] md:text-[16px] font-medium max-w-xl mb-8 text-[#78726D]">
         Experience the Unforgettable Provinces of Afghanistan{' '}
       </p>
       <div className="w-full max-w-6xl px-4">
-        <div className="grid grid-cols-3 grid-rows-2 gap-4">
+        <div className="grid md:grid-cols-3 md:grid-rows-2 md:gap-4 grid-cols-1 gap-4">
           {locations.map((location) => (
             <div
               key={location.name}
-              className={`relative overflow-hidden rounded-lg shadow-md ${location.gridClass}`}
+              className={`relative overflow-hidden rounded-lg shadow-md md:${location.gridClass}`}
             >
               <div className="relative w-full h-[361px]">
                 <Image

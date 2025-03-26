@@ -35,7 +35,7 @@ export const Search = () => {
         height={18}
       />
 
-      <Button iconSrc="/icons/search.png" iconSize={20}>
+      <Button iconSrc="/icons/search.png" iconSize={20} width={108}>
         Search
       </Button>
     </div>

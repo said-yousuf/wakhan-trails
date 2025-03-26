@@ -4,10 +4,10 @@ import Image from 'next/image';
 export const Packages = () => {
   return (
     <div className="flex flex-col items-center justify-center py-14 text-center">
-      <p className="text-5xl font-bold mb-4 max-w-[650px]">
+      <p className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 max-w-[90%] sm:max-w-[650px]">
         Our tour packages for you
       </p>
-      <p className="text-[16px] font-medium max-w-xl mb-8 text-[#78726D]">
+      <p className="text-[14px] sm:text-[16px] font-medium max-w-[90%] sm:max-w-xl mb-8 text-[#78726D]">
         Discover the worlds most popular vacation spots, from tropical beaches
         to vibrant cityscapes, perfect for creating unforgettable memories
       </p>

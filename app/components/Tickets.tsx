@@ -70,7 +70,7 @@ const FlightData = [
     airline: 'Air Canada',
     flightNumber: 'AC859',
     departureCity: 'Toronto',
-    departureCode: 'Y',
+    departureCode: 'YYZ',
     departureTime: '17:00',
     arrivalCity: 'Vancouver',
     arrivalCode: 'YVR',
@@ -95,13 +95,13 @@ const FlightCard = ({
   price = 450,
 }) => {
   return (
-    <div className="bg-white shadow-lg rounded-lg p-4 w-[329] font-sans">
+    <div className="bg-white shadow-lg rounded-lg p-4 w-full font-sans">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-2">
           <div className="bg-blue-500 text-white rounded-full p-2">
             <Plane size={20} />
           </div>
-          <div className="flex items-start flex-col">
+          <div className="flex flex-col">
             <p className="font-semibold text-sm">{airline}</p>
             <p className="text-xs text-gray-500">{flightNumber}</p>
           </div>
@@ -113,19 +113,15 @@ const FlightCard = ({
         <div className="flex flex-col items-start">
           <p className="text-2xl font-bold">{departureTime}</p>
           <p className="text-sm text-gray-600 flex items-center">
-            <span>
-              <ChevronUpCircleIcon size={18} className="mr-1" />
-            </span>
+            <ChevronUpCircleIcon size={18} className="mr-1" />
             {departureCity} ({departureCode})
           </p>
         </div>
-
         <div className="flex items-center">
           <div className="w-8 h-px bg-gray-300 mr-2"></div>
           <Plane size={16} className="text-gray-500" />
           <div className="w-8 h-px bg-gray-300 ml-2"></div>
         </div>
-
         <div className="text-right">
           <p className="text-2xl font-bold">{arrivalTime}</p>
           <p className="text-sm text-gray-600">
@@ -134,9 +130,9 @@ const FlightCard = ({
         </div>
       </div>
 
-      <div className="flex items-center justify-between border-t pt-4">
+      <div className="flex items-center justify-between border-t border-dashed pt-4">
         <p className="text-sm text-gray-600">{travelClass}</p>
-        <p className="text-xl font-bold ">${price}</p>
+        <p className="text-xl font-bold">${price}</p>
       </div>
     </div>
   );
@@ -145,32 +141,20 @@ const FlightCard = ({
 export const Tickets = () => {
   return (
     <div className="flex flex-col items-center justify-center py-14 text-center">
-      <p className="text-5xl font-bold mb-4 max-w-[500px] ">
-        Explore flights to top destinations 
+      <p className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 max-w-[500px]">
+        Explore flights to top destinations
       </p>
-      <p className="text-[16px] font-medium max-w-xl mb-8 text-[#78726D]">
+      <p className="text-sm sm:text-base md:text-[16px] font-medium max-w-xl mb-8 text-[#78726D]">
         Showing roundtrip flights for: March 16 - March 20
       </p>
-      <div className="bg-[#F0282D] p-10 rounded-2xl">
-        <div className="grid grid-cols-3 gap-2 ">
+      <div className="bg-[#F0282D] p-10 rounded-2xl w-full md:w-[1085px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {FlightData.map((flight) => (
-            <FlightCard
-              key={flight.flightNumber}
-              airline={flight.airline}
-              flightNumber={flight.flightNumber}
-              arrivalCity={flight.arrivalCity}
-              arrivalCode={flight.arrivalCode}
-              arrivalTime={flight.arrivalTime}
-              departureCity={flight.departureCity}
-              departureCode={flight.departureCode}
-              departureTime={flight.departureTime}
-              travelClass={flight.travelClass}
-            />
+            <FlightCard key={flight.flightNumber} {...flight} />
           ))}
         </div>
-
         <div className="mt-8 flex justify-center">
-          <button className="flex flex-row justify-center items-center w-[137px] h-[44px] bg-white rounded-[62px]">
+          <button className="flex flex-row justify-center items-center px-6 py-2 bg-white rounded-full text-lg font-medium cursor-pointer hover:bg-gray-200 hover:shadow-lg transition duration-200">
             View all flights
           </button>
         </div>
