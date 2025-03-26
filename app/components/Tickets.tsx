@@ -95,7 +95,7 @@ const FlightCard = ({
   price = 450,
 }) => {
   return (
-    <div className="bg-white shadow-lg rounded-lg p-4 w-full font-sans">
+    <div className="bg-white shadow-lg rounded-lg p-4 w-full font-sans transform transition-transform duration-300 hover:-translate-y-2">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-2">
           <div className="bg-blue-500 text-white rounded-full p-2">

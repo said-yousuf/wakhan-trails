@@ -40,7 +40,7 @@ export const Brands = () => {
               alt={brand.name}
               width={brand.width}
               height={brand.height}
-              className="max-w-[100px] sm:max-w-[135px] md:max-w-none opacity-70 hover:opacity-100 transition-opacity duration-300"
+              className="max-w-[100px] sm:max-w-[135px] md:max-w-none opacity-70  transition-opacity duration-300"
               style={{ objectFit: 'contain' }}
             />
           </div>
