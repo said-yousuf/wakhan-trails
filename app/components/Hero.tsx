@@ -5,7 +5,7 @@ import CloudAnimation from './Cloud-Animation';
 
 export const Hero = () => {
   return (
-    <div className="relative my-3 w-full h-[660px] rounded-[20px] overflow-hidden flex flex-col justify-between">
+    <div className="relative my-3 w-full md:h-[660px] h-[430px] rounded-[20px] overflow-hidden flex flex-col justify-between mt-19">
       {/* Background */}
       <Image
         src="/images/background.png"
@@ -17,14 +17,15 @@ export const Hero = () => {
 
       {/* Clouds */}
       <CloudAnimation
-        countRTL={4}
-        countLTR={4}
+        countRTL={1}
+        countLTR={1}
         verticalRange={{ min: 0, max: 0 }}
         baseDurationRTL={500}
         baseDurationLTR={500}
       />
+
       {/* Text Content */}
-      <div className="relative z-10 text-center mt-16">
+      <div className="relative z-10 text-center pt-6 md:pt-16">
         <h1 className="text-white font-bold text-4xl sm:text-5xl md:text-6xl lg:text-[56px] leading-tight">
           Discover your travel journey
         </h1>
@@ -34,15 +35,17 @@ export const Hero = () => {
       </div>
 
       {/* Plane Image */}
-      <div className="relative z-10 flex justify-center bottom-40 md:bottom-0">
+      <div className="relative z-10 flex justify-center md:mb-0 mb-[-10px] bottom-0">
         <Image
           src="/images/plane.png"
           alt="Plane"
           width={900}
           height={400}
-          className="w-[90%] md:w-[80%] lg:w-[865px] -mb-10"
+          className="w-[90%] md:w-[80%] lg:w-[865px]"
         />
       </div>
     </div>
   );
 };
+
+export default Hero;

@@ -6,13 +6,10 @@ import { useState } from 'react';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <header className="relative flex justify-between items-center p-4 bg-white ">
+    <header className="fixed top-0 left-0 w-full flex justify-between items-center p-4 bg-white z-50 md:px-20 px-5">
       <Image
         src="/logo.png"
         alt="Wakhan Trails"

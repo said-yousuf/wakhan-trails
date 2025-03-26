@@ -60,8 +60,13 @@ export const Destinations = () => {
 
   return (
     <div className="flex flex-col items-center justify-center py-14 text-center">
-      {/* ... (keep your original text content) */}
-
+      <p className="text-3xl md:text-5xl font-bold mb-4 max-w-[300px] md:max-w-[500px]">
+        Escape to top Vacation destinations
+      </p>
+      <p className="text-[14px] md:text-[16px] font-medium max-w-sm md:max-w-xl mb-8 text-[#78726D]">
+        Discover the worlds most popular vacation spots, from tropical beaches
+        to vibrant cityscapes, perfect for creating unforgettable memories.
+      </p>
       {/* Image Slider */}
       <div className="relative flex items-center h-[430px] justify-center w-full md:max-w-[58rem] max-w-xl">
         <AnimatePresence mode="popLayout" custom={direction}>
@@ -117,7 +122,7 @@ export const Destinations = () => {
                   className="rounded-lg object-cover w-full h-full"
                 />
                 {isFocused && (
-                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/80 px-4 py-2 rounded-lg text-sm font-semibold text-black w-[50%] text-center">
+                  <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-white/80 px-40 py-4 rounded-lg text-2xl font-medium text-black w-[50%] flex justify-center items-center">
                     {image.name}
                   </div>
                 )}
@@ -126,7 +131,6 @@ export const Destinations = () => {
           })}
         </AnimatePresence>
       </div>
-
       {/* Navigation Buttons */}
       <div className="flex justify-center mt-4 space-x-4">
         <button

@@ -101,7 +101,7 @@ const FlightCard = ({
           <div className="bg-blue-500 text-white rounded-full p-2">
             <Plane size={20} />
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col items-start">
             <p className="font-semibold text-sm">{airline}</p>
             <p className="text-xs text-gray-500">{flightNumber}</p>
           </div>
