@@ -14,7 +14,7 @@ export const Packages = () => {
 
       {/* Container for the package cards */}
       <div className="container mx-auto ">
-        <div className="flex gap-4 flex-col md:flex-row">
+        <div className="flex gap-4 flex-col md:flex-row md:justify-center">
           <div className="flex justify-center ">
             <div className="relative bg-[#EDF0F7] rounded-2xl w-full md:w-[622px] h-[427px] overflow-hidden transform transition-transform duration-300 hover:-translate-y-2">
               {/* Text Overlay */}
@@ -38,23 +38,23 @@ export const Packages = () => {
                   alt="Kaaba"
                   layout="fill"
                   objectFit="cover"
-                  className="opacity-50 transform scale-110"
+                  className="transform scale-110 "
                 />
               </div>
             </div>
           </div>
 
-          <div className="flex justify-center ">
-            <div className="relative bg-[#EDF0F7] rounded-2xl w-[438px] h-[427px] overflow-hidden transform transition-transform duration-300 hover:-translate-y-2">
+          <div className="flex justify-center">
+            <div className="relative bg-[#EDF0F7] rounded-2xl w-full md:w-[438px] h-[427px] overflow-hidden transform transition-transform duration-300 hover:-translate-y-2">
               {/* Text Overlay */}
-              <div className="absolute bottom-10  left-23 z-10 text-left">
+              <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 text-center w-3xs">
                 <h2 className="text-2xl font-bold text-black mb-4">
                   Secure Travel Visas <br />
                 </h2>
               </div>
 
               {/* Image Container */}
-              <div className="absolute inset-0 top-10 left-10">
+              <div className="absolute inset-0 bottom-10 flex items-center justify-center">
                 <Image
                   src="/images/package-picture.png"
                   alt="Package"
