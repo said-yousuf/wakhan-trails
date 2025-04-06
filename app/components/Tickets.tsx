@@ -140,8 +140,8 @@ const FlightCard = ({
 
 export const Tickets = () => {
   return (
-    <div className="flex flex-col items-center justify-center py-14 text-center">
-      <p className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 max-w-[500px]">
+    <div className="flex flex-col items-center justify-center py-20 text-center">
+      <p className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 max-w-[500px] md:leading-14">
         Explore flights to top destinations
       </p>
       <p className="text-sm sm:text-base md:text-[16px] font-medium max-w-xl mb-8 text-[#78726D]">

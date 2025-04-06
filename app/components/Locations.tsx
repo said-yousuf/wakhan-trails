@@ -40,11 +40,11 @@ export const Locations = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center py-14 text-center">
-      <p className="text-3xl md:text-5xl font-bold mb-4 max-w-[90%] md:max-w-[600px]">
+    <div className="flex flex-col items-center justify-center py-20 text-center">
+      <p className="text-3xl md:text-5xl font-bold mb-4 max-w-[90%] md:max-w-[600px] md:leading-14">
         Discover unforgettable places in Afghanistan
       </p>
-      <p className="text-[14px] md:text-[16px] font-medium max-w-[90%] md:max-w-xl mb-8 text-[#78726D]">
+      <p className="text-[14px] md:text-[16px] font-medium max-w-[90%] md:max-w-xl mb-8 text-[#78726D] ">
         Experience the Unforgettable Provinces of Afghanistan
       </p>
       <div className="w-full max-w-6xl ">

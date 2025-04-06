@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export const Packages = () => {
   return (
-    <div className="py-14 text-center">
+    <div className="py-20 text-center">
       <p className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 max-w-[90%] sm:max-w-[650px] mx-auto">
         Our tour packages for you
       </p>

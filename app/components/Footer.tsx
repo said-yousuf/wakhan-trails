@@ -4,9 +4,9 @@ import Image from 'next/image';
 export const Footer = () => {
   const date = new Date();
   return (
-    <footer className="bg-white relative">
-      <div className="px-4 py-14 text-center flex flex-col items-center justify-center">
-        <p className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 max-w-full md:max-w-[600px] px-4">
+    <footer>
+      <div className="px-4 py-20 text-center flex flex-col items-center justify-center">
+        <p className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 max-w-full md:max-w-[600px] px-4 md:leading-14">
           Your ultimate travel companion
         </p>
         <p className="text-sm md:text-base font-medium max-w-full md:max-w-xl mb-6 text-[#78726D] px-4">

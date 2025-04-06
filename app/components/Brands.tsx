@@ -28,7 +28,7 @@ const BrandsLogo = [
 
 export const Brands = () => {
   return (
-    <div className="container mx-auto px-4 py-14">
+    <div className="container mx-auto px-4 py-20">
       <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
         {BrandsLogo.map((brand) => (
           <div

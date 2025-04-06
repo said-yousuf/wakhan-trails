@@ -56,11 +56,9 @@ export const Destinations = () => {
     setCurrentIndex(getPrevIndex(currentIndex));
   };
 
-  // const positions = ['left', 'center', 'right'];
-
   return (
-    <div className="flex flex-col items-center justify-center py-14 text-center">
-      <p className="text-3xl md:text-5xl font-bold mb-4 max-w-[300px] md:max-w-[500px]">
+    <div className="flex flex-col items-center justify-center py-20 text-center">
+      <p className="text-3xl md:text-5xl font-bold mb-4 max-w-[300px] md:max-w-[520px] md:leading-14">
         Escape to top Vacation destinations
       </p>
       <p className="text-[14px] md:text-[16px] font-medium max-w-sm md:max-w-xl mb-8 text-[#78726D]">
