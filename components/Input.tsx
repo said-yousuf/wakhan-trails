@@ -11,7 +11,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { format } from 'date-fns';
 import Image from 'next/image';
 import React, { useState } from 'react';
 
@@ -111,7 +110,15 @@ export const SearchInput = ({
                rounded-full px-4 cursor-pointer"
             >
               <div className="w-full bg-transparent outline-none text-gray-700 placeholder-gray-400 pr-8">
-                {date ? format(date, 'PPP') : placeholder}
+                {date ? (
+                  date.toLocaleDateString(undefined, {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })
+                ) : (
+                  <span className="text-gray-400">{placeholder}</span>
+                )}
               </div>
               {imagePath && (
                 <Image
