@@ -131,12 +131,15 @@ export const SearchInput = ({
               )}
             </div>
           </PopoverTrigger>
-          <PopoverContent className="w-auto p-0" align="start">
+          <PopoverContent className="w-auto p-0 bg-white" align="start">
             <Calendar
-              mode="single"
               selected={date}
-              onSelect={handleDateSelect}
-              initialFocus
+              onSelect={(selectedDate) => {
+                if (selectedDate) {
+                  handleDateSelect(selectedDate as Date);
+                }
+              }}
+              className="border-none shadow-lg"
             />
           </PopoverContent>
         </Popover>
