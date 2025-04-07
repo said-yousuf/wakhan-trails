@@ -11,7 +11,7 @@ interface CalendarProps {
   disabled?: (date: Date) => boolean;
   className?: string;
   showOutsideDays?: boolean;
-  weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6; // 0 = Sunday
+  weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   fixedWeeks?: boolean;
 }
 
@@ -21,36 +21,43 @@ const Calendar = ({
   mode = 'single',
   disabled,
   className,
+  showOutsideDays = true,
   weekStartsOn,
   fixedWeeks,
 }: CalendarProps) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
 
-  const days = useMemo(() => {
-    const year = currentMonth.getFullYear();
-    const month = currentMonth.getMonth();
-    const firstDay = new Date(year, month, 1);
-    const lastDay = new Date(year, month + 1, 0);
+  const { days, firstDayOfCurrentMonth, lastDayOfCurrentMonth } =
+    useMemo(() => {
+      const year = currentMonth.getFullYear();
+      const month = currentMonth.getMonth();
+      const firstDay = new Date(year, month, 1);
+      const lastDay = new Date(year, month + 1, 0);
 
-    const startDate = new Date(firstDay);
-    const weekStart = weekStartsOn ?? 0;
-    startDate.setDate(
-      firstDay.getDate() - ((firstDay.getDay() - weekStart + 7) % 7)
-    );
+      const startDate = new Date(firstDay);
+      const weekStart = weekStartsOn ?? 0;
+      startDate.setDate(
+        firstDay.getDate() - ((firstDay.getDay() - weekStart + 7) % 7)
+      );
 
-    const endDate = new Date(lastDay);
-    const daysToAdd = fixedWeeks
-      ? 6 - ((lastDay.getDay() - weekStart + 7) % 7)
-      : 0;
-    endDate.setDate(lastDay.getDate() + daysToAdd);
+      const endDate = new Date(lastDay);
+      const daysToAdd = fixedWeeks
+        ? 6 - ((lastDay.getDay() - weekStart + 7) % 7)
+        : 0;
+      endDate.setDate(lastDay.getDate() + daysToAdd);
 
-    const daysArray = [];
-    while (startDate <= endDate) {
-      daysArray.push(new Date(startDate));
-      startDate.setDate(startDate.getDate() + 1);
-    }
-    return daysArray;
-  }, [currentMonth, weekStartsOn, fixedWeeks]);
+      const daysArray = [];
+      while (startDate <= endDate) {
+        daysArray.push(new Date(startDate));
+        startDate.setDate(startDate.getDate() + 1);
+      }
+
+      return {
+        days: daysArray,
+        firstDayOfCurrentMonth: firstDay,
+        lastDayOfCurrentMonth: lastDay,
+      };
+    }, [currentMonth, weekStartsOn, fixedWeeks]);
 
   const isSelected = (date: Date) => {
     if (!selected) return false;
@@ -69,6 +76,13 @@ const Calendar = ({
 
   const handleDateClick = (date: Date) => {
     if (disabled?.(date)) return;
+
+    const isDifferentMonth =
+      date.getMonth() !== currentMonth.getMonth() ||
+      date.getFullYear() !== currentMonth.getFullYear();
+    if (isDifferentMonth) {
+      setCurrentMonth(new Date(date.getFullYear(), date.getMonth()));
+    }
 
     if (mode === 'range') {
       if (!Array.isArray(selected)) {
@@ -93,10 +107,13 @@ const Calendar = ({
 
   return (
     <div
-      className={cn('p-3 bg-background rounded-lg shadow-sm border', className)}
+      className={cn(
+        'p-3 bg-background rounded-lg shadow-sm border w-full max-w-[368px] h-auto',
+        className
+      )}
     >
       <div className="flex flex-col gap-4">
-        <div className="flex items-center justify-between px-2">
+        <div className="flex items-center justify-between px-2 py-1 bg-[#F8F7F7] rounded-xl">
           <button
             onClick={() =>
               setCurrentMonth(
@@ -106,9 +123,9 @@ const Calendar = ({
                 )
               )
             }
-            className="p-1 hover:bg-accent rounded-md"
+            className="p-1 hover:bg-gray-100 rounded-md  bg-white"
           >
-            <ChevronLeft className="h-5 w-5" />
+            <ChevronLeft className="h-4 w-4" />
           </button>
           <div className="font-medium text-sm">{monthName}</div>
           <button
@@ -120,17 +137,17 @@ const Calendar = ({
                 )
               )
             }
-            className="p-1 hover:bg-accent rounded-md"
+            className="p-1 hover:bg-gray-100 rounded-md  bg-white"
           >
-            <ChevronRight className="h-5 w-5" />
+            <ChevronRight className="h-4 w-4" />
           </button>
         </div>
 
-        <div className="grid grid-cols-7 gap-1">
-          {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
+        <div className="grid grid-cols-7 gap-2 sm:gap-5">
+          {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day, index) => (
             <div
-              key={day}
-              className="text-muted-foreground text-xs h-8 flex items-center justify-center"
+              key={`${day}-${index}`}
+              className="text-muted-foreground text-[14px] flex items-center justify-center w-10 h-10"
             >
               {day}
             </div>
@@ -138,6 +155,8 @@ const Calendar = ({
 
           {days.map((date) => {
             const isCurrentMonth = date.getMonth() === currentMonth.getMonth();
+            const isPreviousMonth = date < firstDayOfCurrentMonth;
+            const isNextMonth = date > lastDayOfCurrentMonth;
             const isDisabled = disabled?.(date);
             const selected = isSelected(date);
             const inRange = isInRange(date);
@@ -147,18 +166,23 @@ const Calendar = ({
               <button
                 key={date.toDateString()}
                 onClick={() => handleDateClick(date)}
-                onMouseEnter={() => mode === 'range'}
                 className={cn(
-                  'h-8 rounded-md text-sm transition-colors',
-                  'focus:outline-none focus:ring-2 focus:ring-ring',
+                  'h-8 w-8 text-xs sm:h-10 sm:w-10 sm:text-sm rounded-md font-medium transition-colors',
+                  'focus:outline-none ',
                   !isCurrentMonth && 'text-muted-foreground/40',
+                  isPreviousMonth && 'text-muted-foreground/30',
+                  isNextMonth && 'text-muted-foreground/50',
+                  !showOutsideDays &&
+                    !isCurrentMonth &&
+                    'invisible pointer-events-none',
                   isDisabled && 'opacity-50 cursor-not-allowed',
                   selected &&
-                    'bg-primary text-primary-foreground hover:bg-primary/90',
-                  inRange && 'bg-primary/20',
-                  isToday && 'border border-primary',
+                    'bg-[#EE2A30] text-primary-foreground hover:bg-[#EE2A30]/90',
+                  inRange && 'bg-[#EE2A30]/20',
+                  isToday && !selected && 'border border-primary',
                   !selected &&
                     !isDisabled &&
+                    !inRange &&
                     'hover:bg-accent hover:text-accent-foreground'
                 )}
                 disabled={isDisabled}
