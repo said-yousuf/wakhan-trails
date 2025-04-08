@@ -4,7 +4,7 @@ import Image from 'next/image';
 export const Footer = () => {
   const date = new Date();
   return (
-    <footer>
+    <footer className="mt-auto bg-white  md:px-20 px-5">
       <div className="px-4 py-20 text-center flex flex-col items-center justify-center">
         <p className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 max-w-full md:max-w-[600px] px-4 md:leading-14">
           Your ultimate travel companion
@@ -16,8 +16,9 @@ export const Footer = () => {
           Contact us
         </Button>
       </div>
-
-      {/* <Image
+      {/* Uncomment if you have decorative images */}
+      {/*
+      <Image
         src="/images/cloud.png"
         alt={`Cloud`}
         width={600}
@@ -31,8 +32,8 @@ export const Footer = () => {
         width={600}
         height={370}
         className="absolute bottom-5 right-0 z-50 "
-      /> */}
-
+      /> 
+      */}
       <div className="px-4 py-6 border-t border-dashed border-[#D2D2D2]">
         <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
           <div className="flex justify-center md:justify-start w-full md:w-auto">

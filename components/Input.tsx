@@ -11,15 +11,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { MapPin } from 'lucide-react';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface LocationData {
   id: string;
   name: string;
 }
 
-type InputValue = Date | LocationData | string | undefined;
+export type InputValue = Date | LocationData | string | undefined;
 
 interface SearchInputProps {
   placeholder: string;
@@ -28,6 +29,7 @@ interface SearchInputProps {
   height?: number;
   type?: 'default' | 'calendar' | 'dropdown';
   onValueChange?: (value: InputValue) => void;
+  value?: InputValue;
 }
 
 export const SearchInput = ({
@@ -37,41 +39,78 @@ export const SearchInput = ({
   height = 18,
   type = 'default',
   onValueChange,
+  value,
 }: SearchInputProps) => {
-  const [date, setDate] = useState<Date>();
-  const [location, setLocation] = useState<string>('');
-  const [text, setText] = useState<string>('');
+  //
+  // For default text input:
+  //
+  const [internalText, setInternalText] = useState<string>('');
+  useEffect(() => {
+    if (typeof value === 'string') {
+      setInternalText(value);
+    }
+  }, [value]);
+
+  //
+  // For calendar input:
+  //
+  const [internalDate, setInternalDate] = useState<Date | undefined>(undefined);
+  useEffect(() => {
+    if (value instanceof Date) {
+      setInternalDate(value);
+    }
+  }, [value]);
+
+  //
+  // For dropdown input:
+  //
+  const [internalLocation, setInternalLocation] = useState<string>('');
+  useEffect(() => {
+    if (value && typeof value === 'object' && 'id' in value) {
+      setInternalLocation(value.id);
+    } else if (typeof value === 'string') {
+      setInternalLocation(value);
+    }
+  }, [value]);
 
   const locations = [
-    { id: 'nyc', name: 'New York City' },
-    { id: 'sf', name: 'San Francisco' },
-    { id: 'chi', name: 'Chicago' },
-    { id: 'la', name: 'Los Angeles' },
-    { id: 'mia', name: 'Miami' },
+    { id: 'kbl', name: 'Kabul' },
+    { id: 'mzr', name: 'Mazar-i-Sharif' },
+    { id: 'her', name: 'Herat' },
+    { id: 'kan', name: 'Kandahar' },
+    { id: 'dxz', name: 'Dubai' },
+    { id: 'ist', name: 'Istanbul' },
+    { id: 'doh', name: 'Doha' },
+    { id: 'del', name: 'Delhi' },
+    { id: 'isb', name: 'Islamabad' },
   ];
 
-  const handleDateSelect = (selectedDate: Date | undefined) => {
-    setDate(selectedDate);
-    if (onValueChange) {
-      onValueChange(selectedDate);
-    }
-  };
-
-  const handleLocationChange = (value: string) => {
-    setLocation(value);
-    if (onValueChange) {
-      const selectedLocation = locations.find((loc) => loc.id === value);
-      onValueChange(selectedLocation);
-    }
-  };
-
+  // Handlers:
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setText(e.target.value);
+    setInternalText(e.target.value);
     if (onValueChange) {
       onValueChange(e.target.value);
     }
   };
 
+  const handleDateSelect = (selectedDate: Date | undefined) => {
+    setInternalDate(selectedDate);
+    if (onValueChange) {
+      onValueChange(selectedDate);
+    }
+  };
+
+  const handleLocationChange = (val: string) => {
+    setInternalLocation(val);
+    if (onValueChange) {
+      const selectedLocation = locations.find((loc) => loc.id === val);
+      onValueChange(selectedLocation);
+    }
+  };
+
+  //
+  // Render by type:
+  //
   if (type === 'default') {
     return (
       <div
@@ -83,7 +122,7 @@ export const SearchInput = ({
           type="text"
           placeholder={placeholder}
           className="w-full bg-transparent outline-none text-gray-700 placeholder-gray-400 pr-8"
-          value={text}
+          value={internalText}
           onChange={handleTextChange}
         />
         {imagePath && (
@@ -110,8 +149,8 @@ export const SearchInput = ({
                rounded-full px-4 cursor-pointer"
             >
               <div className="w-full bg-transparent outline-none text-gray-700 placeholder-gray-400 pr-8">
-                {date ? (
-                  date.toLocaleDateString(undefined, {
+                {internalDate ? (
+                  internalDate.toLocaleDateString(undefined, {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric',
@@ -133,7 +172,7 @@ export const SearchInput = ({
           </PopoverTrigger>
           <PopoverContent className="w-auto p-0 bg-white mt-2" align="start">
             <Calendar
-              selected={date}
+              selected={internalDate}
               onSelect={(selectedDate) => {
                 if (selectedDate) {
                   handleDateSelect(selectedDate as Date);
@@ -150,7 +189,7 @@ export const SearchInput = ({
   if (type === 'dropdown') {
     return (
       <div className="relative md:w-[175.5px] w-full">
-        <Select value={location} onValueChange={handleLocationChange}>
+        <Select value={internalLocation} onValueChange={handleLocationChange}>
           <SelectTrigger className="w-full !h-[44px] bg-white border border-white shadow-[0px_1px_2px_rgba(188,188,188,0.24),0px_0px_0px_1px_rgba(0,0,0,0.08)] rounded-full px-4">
             <SelectValue placeholder={placeholder} />
             {imagePath && (
@@ -163,10 +202,11 @@ export const SearchInput = ({
               />
             )}
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="mt-2">
             {locations.map((loc) => (
               <SelectItem key={loc.id} value={loc.id}>
-                {loc.name}
+                <MapPin />
+                <span className="font-normal text-[14px]">{loc.name}</span>
               </SelectItem>
             ))}
           </SelectContent>

@@ -10,15 +10,17 @@ import { Tickets } from './components/Tickets';
 
 export default function Home() {
   return (
-    <div className="flex flex-col h-full md:px-20  px-5">
+    <div className="flex flex-col h-full ">
       <Header />
-      <Hero />
-      <Search />
-      <Brands />
-      <Destinations />
-      <Tickets />
-      <Packages />
-      <Locations />
+      <main className="md:px-20  px-5">
+        <Hero />
+        <Search />
+        <Brands />
+        <Destinations />
+        <Tickets />
+        <Packages />
+        <Locations />
+      </main>
       <Footer />
     </div>
   );
