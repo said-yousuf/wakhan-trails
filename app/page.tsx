@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className="flex flex-col h-full ">
       <Header />
-      <main className="md:px-20  px-5">
+      <main className="md:px-20  px-4">
         <Hero />
         <Search />
         <Brands />

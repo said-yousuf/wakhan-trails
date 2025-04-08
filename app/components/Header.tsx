@@ -1,6 +1,6 @@
 'use client';
 import { Button } from '@/components/Button';
-import { Menu, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
 
@@ -23,7 +23,13 @@ export const Header = () => {
         className="md:hidden z-20"
         aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
       >
-        {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        {isMenuOpen ? (
+          <X size={24} />
+        ) : (
+          <div className="bg-[#EDF0F7] rounded-full w-10 h-10 flex items-center justify-center">
+            <Image src="/icons/menu.svg" height={20} width={24} alt="menu" />
+          </div>
+        )}
       </button>
 
       <div className="hidden md:flex items-center gap-6">

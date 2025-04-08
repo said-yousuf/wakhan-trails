@@ -170,9 +170,9 @@ export const Search = () => {
         </Button>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 px-4 mx-auto md:w-[895.99px] w-full">
+      <div className="grid grid-cols-1 gap-4 px-4 mx-auto md:w-[1082px] w-full md:grid-cols-3">
         {hasSearched && searchResults.length === 0 ? (
-          <p className="text-gray-500 text-lg py-8 text-center font-medium">
+          <p className="text-gray-500 text-lg py-8 text-center font-medium col-span-full">
             No flights found for your search criteria.
           </p>
         ) : (

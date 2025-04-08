@@ -5,7 +5,7 @@ import CloudAnimation from './Cloud-Animation';
 
 export const Hero = () => {
   return (
-    <div className="relative my-3 w-full md:h-[660px] h-[430px] rounded-[20px] overflow-hidden flex flex-col justify-between mt-19">
+    <div className="relative my-3 w-full md:h-[660px] h-[304px] sm:h-[430px] rounded-[20px] overflow-hidden flex flex-col justify-between mt-19">
       {/* Background */}
       <Image
         src="/images/background.png"
@@ -35,7 +35,7 @@ export const Hero = () => {
       </div>
 
       {/* Plane Image */}
-      <div className="relative z-10 flex justify-center md:mb-0 mb-[-10px] bottom-0">
+      <div className="relative z-10 flex justify-center md:mb-0 mb-[-10px] bottom-5 md:bottom-0">
         <Image
           src="/images/plane.png"
           alt="Plane"
