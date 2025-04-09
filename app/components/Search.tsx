@@ -12,37 +12,21 @@ export const Search = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // Read query parameters from URL for persisting search values
   const qsDestination = searchParams.get('destination') || '';
   const qsDeparting = searchParams.get('departing') || '';
   const qsLeaving = searchParams.get('leaving') || '';
   const qsAdults = searchParams.get('adults') || '';
 
-  // Controlled state for inputs (initial values come from URL if present)
   const [destination, setDestination] = useState<string>(qsDestination);
   const [departing, setDeparting] = useState<string>(qsDeparting);
   const [leaving, setLeaving] = useState<string>(qsLeaving);
   const [adults, setAdults] = useState<string>(qsAdults);
 
   const [searchResults, setSearchResults] = useState<typeof flights>([]);
-  const [hasSearched, setHasSearched] = useState(false); // flag to avoid premature "No flights found" message
+  const [hasSearched, setHasSearched] = useState(false);
 
   const viewAll = searchParams.get('view') === 'all';
 
-  useEffect(() => {
-    if (viewAll) {
-      setHasSearched(true);
-      setSearchResults(flights); // show all flights
-      return;
-    }
-
-    if (qsDestination && qsDeparting && qsAdults) {
-      setHasSearched(true);
-      performSearch(qsDestination, qsDeparting, qsAdults);
-    }
-  }, [qsDestination, qsDeparting, qsAdults, viewAll]);
-
-  // Handlers for updating state from input changes:
   const handleLocationChange = (value: InputValue) => {
     console.log('Location changed:', value);
     if (value && typeof value === 'object' && 'id' in value) {
@@ -97,7 +81,6 @@ export const Search = () => {
     setSearchResults(results);
   };
 
-  // When user clicks search, update URL and set flag, then run search:
   const handleSearch = () => {
     console.log('Search triggered with:', {
       destination,
@@ -110,9 +93,6 @@ export const Search = () => {
       return;
     }
 
-    setHasSearched(true);
-
-    // Update URL with query parameters so that the state persists on redirection.
     router.push(
       `/flight?destination=${encodeURIComponent(
         destination
@@ -122,17 +102,20 @@ export const Search = () => {
         adults
       )}`
     );
-
-    performSearch(destination, departing, adults);
   };
 
-  // If query parameters exist, run the search automatically on mount.
   useEffect(() => {
+    if (viewAll) {
+      setHasSearched(true);
+      setSearchResults(flights);
+      return;
+    }
+
     if (qsDestination && qsDeparting && qsAdults) {
       setHasSearched(true);
       performSearch(qsDestination, qsDeparting, qsAdults);
     }
-  }, [qsDestination, qsDeparting, qsAdults]);
+  }, [qsDestination, qsDeparting, qsAdults, viewAll]);
 
   return (
     <>
