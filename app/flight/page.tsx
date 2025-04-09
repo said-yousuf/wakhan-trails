@@ -3,7 +3,7 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { Search } from '../components/Search';
 
-const LoadingFallback = () => {
+export const LoadingFallback = () => {
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-50">
       <div className="flex flex-col items-center space-y-4">
