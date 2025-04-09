@@ -27,6 +27,21 @@ export const Search = () => {
   const [searchResults, setSearchResults] = useState<typeof flights>([]);
   const [hasSearched, setHasSearched] = useState(false); // flag to avoid premature "No flights found" message
 
+  const viewAll = searchParams.get('view') === 'all';
+
+  useEffect(() => {
+    if (viewAll) {
+      setHasSearched(true);
+      setSearchResults(flights); // show all flights
+      return;
+    }
+
+    if (qsDestination && qsDeparting && qsAdults) {
+      setHasSearched(true);
+      performSearch(qsDestination, qsDeparting, qsAdults);
+    }
+  }, [qsDestination, qsDeparting, qsAdults, viewAll]);
+
   // Handlers for updating state from input changes:
   const handleLocationChange = (value: InputValue) => {
     console.log('Location changed:', value);
@@ -170,7 +185,7 @@ export const Search = () => {
         </Button>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 px-4 mx-auto md:w-[1082px] w-full md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 mx-auto md:w-[1082px] w-full md:grid-cols-3">
         {hasSearched && searchResults.length === 0 ? (
           <p className="text-gray-500 text-lg py-8 text-center font-medium col-span-full">
             No flights found for your search criteria.

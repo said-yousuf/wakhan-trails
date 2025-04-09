@@ -25,11 +25,11 @@ export const Hero = () => {
       />
 
       {/* Text Content */}
-      <div className="relative z-10 text-center pt-6 md:pt-16">
-        <h1 className="text-white font-bold text-4xl sm:text-5xl md:text-6xl lg:text-[56px] leading-tight">
+      <div className="relative z-10 text-center pt-6 md:pt-16 px-6">
+        <h1 className="text-white font-bold text-3xl sm:text-5xl md:text-6xl lg:text-[56px] leading-tight">
           Discover your travel journey
         </h1>
-        <p className="text-white font-medium text-base sm:text-lg md:text-xl mt-2">
+        <p className="text-white font-medium text-base sm:text-lg md:text-xl mt-2 ">
           Flights, tours, and travel packages at the best prices!
         </p>
       </div>

@@ -58,10 +58,10 @@ export const Destinations = () => {
 
   return (
     <div className="flex flex-col items-center justify-center py-20 text-center">
-      <p className="text-3xl md:text-5xl font-bold mb-4 max-w-[300px] md:max-w-[520px] md:leading-14">
+      <p className="text-3xl md:text-5xl font-bold mb-4 max-w-[335px] md:max-w-[520px] md:leading-14">
         Escape to top Vacation destinations
       </p>
-      <p className="text-[14px] md:text-[16px] font-medium max-w-sm md:max-w-xl mb-8 text-[#78726D]">
+      <p className="text-[16px] font-medium max-w-[356px] md:max-w-xl mb-8 text-[#78726D]">
         Discover the worlds most popular vacation spots, from tropical beaches
         to vibrant cityscapes, perfect for creating unforgettable memories.
       </p>

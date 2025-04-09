@@ -6,6 +6,7 @@ interface ButtonProps {
   iconSize?: number;
   width?: number;
   onClick?: () => void;
+  className?: string;
 }
 
 export const Button = ({
@@ -14,6 +15,7 @@ export const Button = ({
   iconSize = 18,
   width = 108,
   onClick,
+  className,
 }: ButtonProps) => {
   return (
     <button
@@ -25,7 +27,13 @@ export const Button = ({
     >
       {children}
       {iconSrc && (
-        <Image src={iconSrc} alt="Icon" width={iconSize} height={iconSize} />
+        <Image
+          src={iconSrc}
+          alt="Icon"
+          width={iconSize}
+          height={iconSize}
+          className={className}
+        />
       )}
     </button>
   );

@@ -44,7 +44,7 @@ export const Locations = () => {
       <p className="text-3xl md:text-5xl font-bold mb-4 max-w-[90%] md:max-w-[600px] md:leading-14">
         Discover unforgettable places in Afghanistan
       </p>
-      <p className="text-[14px] md:text-[16px] font-medium max-w-[90%] md:max-w-xl mb-8 text-[#78726D] ">
+      <p className="text-[16px] font-medium max-w-[90%] md:max-w-xl mb-8 text-[#78726D] ">
         Experience the Unforgettable Provinces of Afghanistan
       </p>
       <div className="w-full max-w-6xl ">
@@ -66,7 +66,7 @@ export const Locations = () => {
               <div
                 className={`absolute bottom-8 ${
                   location.name === 'Bamyan'
-                    ? 'md:left-10 left-35'
+                    ? 'md:left-10 left-30'
                     : 'left-0 right-0'
                 } bg-opacity-50 text-white text-center p-2 font-bold text-3xl`}
               >

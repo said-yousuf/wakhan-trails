@@ -1,4 +1,7 @@
+'use client';
+
 import { ChevronUpCircleIcon, Plane } from 'lucide-react';
+import { redirect } from 'next/navigation';
 
 const FlightData = [
   {
@@ -118,9 +121,7 @@ const FlightCard = ({
           </p>
         </div>
         <div className="flex items-center">
-          <div className="w-8 h-px bg-gray-300 mr-2"></div>
           <Plane size={16} className="text-gray-500" />
-          <div className="w-8 h-px bg-gray-300 ml-2"></div>
         </div>
         <div className="text-right">
           <p className="text-2xl font-bold">{arrivalTime}</p>
@@ -139,22 +140,28 @@ const FlightCard = ({
 };
 
 export const Tickets = () => {
+  const handleViewAll = () => {
+    redirect('/flight?view=all');
+  };
   return (
     <div className="flex flex-col items-center justify-center py-20 text-center">
       <p className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 max-w-[500px] md:leading-14">
         Explore flights to top destinations
       </p>
-      <p className="text-sm sm:text-base md:text-[16px] font-medium max-w-xl mb-8 text-[#78726D]">
+      <p className="text-[16px] sm:text-base md:text-[16px] font-medium max-w-xl mb-8 text-[#78726D]">
         Showing roundtrip flights for: March 16 - March 20
       </p>
-      <div className="bg-[#F0282D] p-10 rounded-2xl w-full md:w-[1085px]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="bg-[#F0282D] p-4 md:p-10 rounded-2xl w-full md:w-[1085px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
           {FlightData.map((flight) => (
             <FlightCard key={flight.flightNumber} {...flight} />
           ))}
         </div>
         <div className="mt-8 flex justify-center">
-          <button className="flex flex-row justify-center items-center px-6 py-2 bg-white rounded-full text-lg font-medium cursor-pointer hover:bg-gray-200 hover:shadow-lg transition duration-200">
+          <button
+            onClick={handleViewAll}
+            className="flex flex-row justify-center items-center px-6 py-2 bg-white rounded-full text-lg font-medium cursor-pointer hover:bg-gray-200 hover:shadow-lg transition duration-200"
+          >
             View all flights
           </button>
         </div>
