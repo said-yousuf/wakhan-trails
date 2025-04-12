@@ -98,42 +98,107 @@ const FlightCard = ({
   price = 450,
 }) => {
   return (
-    <div className="bg-white shadow-lg rounded-lg p-4 w-full font-sans transform transition-transform duration-300 hover:-translate-y-2">
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center space-x-2">
-          <div className="bg-blue-500 text-white rounded-full p-2">
+    <div
+      style={{
+        backgroundColor: 'white',
+        boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+        borderRadius: '0.5rem',
+        padding: '1rem',
+        width: '100%',
+        fontFamily: 'sans-serif',
+        transform: 'translateY(0)',
+        transition: 'transform 0.3s',
+      }}
+      onMouseOver={(e) =>
+        (e.currentTarget.style.transform = 'translateY(-8px)')
+      }
+      onMouseOut={(e) => (e.currentTarget.style.transform = 'translateY(0)')}
+    >
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          marginBottom: '1rem',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <div
+            style={{
+              backgroundColor: '#3B82F6',
+              color: 'white',
+              borderRadius: '9999px',
+              padding: '0.5rem',
+            }}
+          >
             <Plane size={20} />
           </div>
-          <div className="flex flex-col items-start">
-            <p className="font-semibold text-sm">{airline}</p>
-            <p className="text-xs text-gray-500">{flightNumber}</p>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+            }}
+          >
+            <p style={{ fontWeight: 600, fontSize: '0.875rem' }}>{airline}</p>
+            <p style={{ fontSize: '0.75rem', color: '#6B7280' }}>
+              {flightNumber}
+            </p>
           </div>
         </div>
-        <p className="text-sm text-gray-500">{duration}</p>
+        <p style={{ fontSize: '0.875rem', color: '#6B7280' }}>{duration}</p>
       </div>
 
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex flex-col items-start">
-          <p className="text-2xl font-bold">{departureTime}</p>
-          <p className="text-sm text-gray-600 flex items-center">
-            <ChevronUpCircleIcon size={18} className="mr-1" />
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          marginBottom: '1rem',
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+          }}
+        >
+          <p style={{ fontSize: '1.5rem', fontWeight: 700 }}>{departureTime}</p>
+          <p
+            style={{
+              fontSize: '0.875rem',
+              color: '#4B5563',
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            <ChevronUpCircleIcon size={18} style={{ marginRight: '0.25rem' }} />
             {departureCity} ({departureCode})
           </p>
         </div>
-        <div className="flex items-center">
-          <Plane size={16} className="text-gray-500" />
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <Plane size={16} style={{ color: '#6B7280' }} />
         </div>
-        <div className="text-right">
-          <p className="text-2xl font-bold">{arrivalTime}</p>
-          <p className="text-sm text-gray-600">
+        <div style={{ textAlign: 'right' }}>
+          <p style={{ fontSize: '1.5rem', fontWeight: 700 }}>{arrivalTime}</p>
+          <p style={{ fontSize: '0.875rem', color: '#4B5563' }}>
             {arrivalCity} ({arrivalCode})
           </p>
         </div>
       </div>
 
-      <div className="flex items-center justify-between border-t border-dashed pt-4">
-        <p className="text-sm text-gray-600">{travelClass}</p>
-        <p className="text-xl font-bold">${price}</p>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          borderTop: '1px dashed #E5E7EB',
+          paddingTop: '1rem',
+        }}
+      >
+        <p style={{ fontSize: '0.875rem', color: '#4B5563' }}>{travelClass}</p>
+        <p style={{ fontSize: '1.25rem', fontWeight: 700 }}>${price}</p>
       </div>
     </div>
   );

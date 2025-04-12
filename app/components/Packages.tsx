@@ -52,8 +52,25 @@ export const Packages = () => {
 
           <div className="flex justify-center">
             <div className="relative bg-[#EDF0F7] rounded-2xl w-full md:w-[438px] h-[427px] overflow-hidden transform transition-transform duration-300 hover:-translate-y-2">
-              <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 text-center w-3xs">
-                <h2 className="text-2xl font-bold text-black mb-4">
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: '2rem',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  zIndex: 10,
+                  textAlign: 'center',
+                  width: 'max-content',
+                }}
+              >
+                <h2
+                  style={{
+                    fontSize: '1.5rem',
+                    fontWeight: 'bold',
+                    color: 'black',
+                    marginBottom: '1rem',
+                  }}
+                >
                   Secure Travel Visas <br />
                 </h2>
               </div>

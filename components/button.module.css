@@ -1,0 +1,22 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 14px;
+  gap: 10px;
+  height: 41px;
+  background: linear-gradient(to bottom, #ff6064, #ea1e24);
+  border-radius: 62px;
+  color: white;
+  font-weight: bold;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+.button:active {
+  transform: translateY(2px);
+}

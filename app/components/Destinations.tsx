@@ -103,10 +103,12 @@ export const Destinations = () => {
                   damping: 30,
                   duration: 0.5,
                 }}
-                className={`absolute flex-shrink-0 ${
-                  isFocused ? 'w-[346px] h-[430px]' : 'w-[275px] h-[341px]'
-                }`}
+                className="image-container"
                 style={{
+                  position: 'absolute',
+                  flexShrink: 0,
+                  width: isFocused ? '346px' : '275px',
+                  height: isFocused ? '430px' : '341px',
                   left: i === 0 ? '0%' : undefined,
                   right: i === 2 ? '0%' : undefined,
                   transform: i === 1 ? 'translateX(-50%)' : undefined,
@@ -117,10 +119,32 @@ export const Destinations = () => {
                   alt={image.name}
                   width={isFocused ? 346 : 275}
                   height={isFocused ? 430 : 341}
-                  className="rounded-lg object-cover w-full h-full"
+                  style={{
+                    borderRadius: '0.5rem',
+                    objectFit: 'cover',
+                    width: '100%',
+                    height: '100%',
+                  }}
                 />
                 {isFocused && (
-                  <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-white/80 px-40 py-4 rounded-lg text-2xl font-medium text-black w-[50%] flex justify-center items-center">
+                  <div
+                    style={{
+                      position: 'absolute',
+                      bottom: '0.5rem',
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                      padding: '1rem 10rem',
+                      borderRadius: '0.5rem',
+                      fontSize: '1.5rem',
+                      fontWeight: 500,
+                      color: 'black',
+                      width: '50%',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
+                  >
                     {image.name}
                   </div>
                 )}
@@ -130,16 +154,43 @@ export const Destinations = () => {
         </AnimatePresence>
       </div>
       {/* Navigation Buttons */}
-      <div className="flex justify-center mt-4 space-x-4">
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          marginTop: '1rem',
+          gap: '1rem',
+        }}
+      >
         <button
           onClick={handlePrev}
-          className="bg-white border border-[#E9E8E5] rounded-full px-6 py-2 hover:bg-gray-300"
+          style={{
+            backgroundColor: 'white',
+            border: '1px solid #E9E8E5',
+            borderRadius: '9999px',
+            padding: '0.5rem 1.5rem',
+            cursor: 'pointer',
+          }}
+          onMouseOver={(e) =>
+            (e.currentTarget.style.backgroundColor = '#D1D5DB')
+          }
+          onMouseOut={(e) => (e.currentTarget.style.backgroundColor = 'white')}
         >
           <ChevronLeft />
         </button>
         <button
           onClick={handleNext}
-          className="bg-white border border-[#E9E8E5] rounded-full px-6 py-2 hover:bg-gray-300"
+          style={{
+            backgroundColor: 'white',
+            border: '1px solid #E9E8E5',
+            borderRadius: '9999px',
+            padding: '0.5rem 1.5rem',
+            cursor: 'pointer',
+          }}
+          onMouseOver={(e) =>
+            (e.currentTarget.style.backgroundColor = '#D1D5DB')
+          }
+          onMouseOut={(e) => (e.currentTarget.style.backgroundColor = 'white')}
         >
           <ChevronRight />
         </button>

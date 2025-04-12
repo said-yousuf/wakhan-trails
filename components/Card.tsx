@@ -16,43 +16,100 @@ export default function FlightSearchResult({
   price = 349,
 }) {
   return (
-    <div className="bg-white shadow-md rounded-lg p-4 w-full text-sm font-sans transition-all duration-200 hover:shadow-lg border border-gray-100">
-      <div className="flex items-center justify-between mb-3">
-        <div className="flex items-center space-x-2">
-          <div className="bg-blue-500 text-white rounded-full p-1.5">
+    <div
+      style={{
+        backgroundColor: 'white',
+        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+        borderRadius: '0.5rem',
+        padding: '1rem',
+        width: '100%',
+        fontSize: '0.875rem',
+        fontFamily: 'sans-serif',
+        transition: 'all 0.2s',
+        border: '1px solid #f3f4f6',
+      }}
+    >
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          marginBottom: '0.75rem',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <div
+            style={{
+              backgroundColor: '#3b82f6',
+              color: 'white',
+              borderRadius: '9999px',
+              padding: '0.375rem',
+            }}
+          >
             <Plane size={16} />
           </div>
-          <div className="flex flex-col">
-            <p className="font-semibold">{airline}</p>
-            <p className="text-xs text-gray-500">{flightNumber}</p>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <p style={{ fontWeight: '600' }}>{airline}</p>
+            <p style={{ fontSize: '0.75rem', color: '#6b7280' }}>
+              {flightNumber}
+            </p>
           </div>
         </div>
-        <div className="text-right">
-          <div className="flex items-center text-xs text-gray-600">
-            <Clock size={12} className="mr-1" />
+        <div style={{ textAlign: 'right' }}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              fontSize: '0.75rem',
+              color: '#4b5563',
+            }}
+          >
+            <Clock size={12} style={{ marginRight: '0.25rem' }} />
             <span>{duration}</span>
           </div>
         </div>
       </div>
 
-      <div className="flex items-center justify-between mb-3">
-        <div className="flex flex-col">
-          <p className="text-base font-bold">{departureTime}</p>
-          <div className="flex gap-0.5">
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          marginBottom: '0.75rem',
+        }}
+      >
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <p style={{ fontSize: '1rem', fontWeight: '700' }}>{departureTime}</p>
+          <div style={{ display: 'flex', gap: '0.125rem' }}>
             <CircleArrowUp size={15} />
-            <p className="text-xs text-[#78726D] font-semibold">
+            <p
+              style={{
+                fontSize: '0.75rem',
+                color: '#78726D',
+                fontWeight: '600',
+              }}
+            >
               {departureCity} ({departureCode})
             </p>
           </div>
         </div>
-        <div className="flex items-center mx-2">
-          <Plane size={14} className="text-gray-500 " />
+        <div
+          style={{ display: 'flex', alignItems: 'center', margin: '0 0.5rem' }}
+        >
+          <Plane size={14} style={{ color: '#6b7280' }} />
         </div>
-        <div className="text-right">
-          <p className="text-base font-bold">{arrivalTime}</p>
-          <div className="flex gap-0.5">
+        <div style={{ textAlign: 'right' }}>
+          <p style={{ fontSize: '1rem', fontWeight: '700' }}>{arrivalTime}</p>
+          <div style={{ display: 'flex', gap: '0.125rem' }}>
             <CircleArrowUp size={15} />
-            <p className="text-xs text-[#78726D] font-semibold flex">
+            <p
+              style={{
+                fontSize: '0.75rem',
+                color: '#78726D',
+                fontWeight: '600',
+                display: 'flex',
+              }}
+            >
               {arrivalCity} ({arrivalCode})
             </p>
           </div>
@@ -60,17 +117,39 @@ export default function FlightSearchResult({
       </div>
 
       {stops > 0 && (
-        <div className="text-xs text-gray-500 italic mb-2">
+        <div
+          style={{
+            fontSize: '0.75rem',
+            color: '#6b7280',
+            fontStyle: 'italic',
+            marginBottom: '0.5rem',
+          }}
+        >
           {stops === 1 ? '1 stop' : `${stops} stops`}
           {stopCities.length > 0 ? ` via ${stopCities.join(', ')}` : ''}
         </div>
       )}
 
-      <div className="flex items-center justify-between border-t border-dashed pt-3">
-        <span className=" text-[#78726D] px-2 py-0.5  text-xs font-medium">
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          borderTop: '1px dashed #e5e7eb',
+          paddingTop: '0.75rem',
+        }}
+      >
+        <span
+          style={{
+            color: '#78726D',
+            padding: '0.125rem 0.5rem',
+            fontSize: '0.75rem',
+            fontWeight: '500',
+          }}
+        >
           {travelClass} Class
         </span>
-        <p className="text-lg font-bold ">${price}</p>
+        <p style={{ fontSize: '1.125rem', fontWeight: '700' }}>${price}</p>
       </div>
     </div>
   );

@@ -114,8 +114,9 @@ export const SearchInput = ({
   if (type === 'default') {
     return (
       <div
+        style={{ border: '1px solid #e5e7eb' }}
         className="relative md:w-[175.5px] w-full h-[44px] flex items-center
-         bg-white border border-white shadow-[0px_1px_2px_rgba(188,188,188,0.24),0px_0px_0px_1px_rgba(0,0,0,0.08)]
+         bg-white border border-white
          rounded-full px-4"
       >
         <input
@@ -144,8 +145,9 @@ export const SearchInput = ({
         <Popover>
           <PopoverTrigger asChild>
             <div
+              style={{ border: '1px solid #e5e7eb' }}
               className="relative md:w-[175.5px] w-full h-[44px] flex items-center
-               bg-white border border-white shadow-[0px_1px_2px_rgba(188,188,188,0.24),0px_0px_0px_1px_rgba(0,0,0,0.08)]
+               bg-white border border-white 
                rounded-full px-4 cursor-pointer"
             >
               <div className="w-full bg-transparent outline-none text-gray-700 placeholder-gray-400 pr-8">
@@ -190,7 +192,10 @@ export const SearchInput = ({
     return (
       <div className="relative md:w-[175.5px] w-full">
         <Select value={internalLocation} onValueChange={handleLocationChange}>
-          <SelectTrigger className="w-full !h-[44px] bg-white border border-white shadow-[0px_1px_2px_rgba(188,188,188,0.24),0px_0px_0px_1px_rgba(0,0,0,0.08)] rounded-full px-4">
+          <SelectTrigger
+            style={{ border: '1px solid #e5e7eb' }}
+            className="w-full !h-[44px] bg-white rounded-full px-4"
+          >
             <SelectValue placeholder={placeholder} />
             {imagePath && (
               <Image

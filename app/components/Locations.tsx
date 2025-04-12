@@ -52,7 +52,7 @@ export const Locations = () => {
           {locations.map((location) => (
             <div
               key={location.name}
-              className={`relative overflow-hidden rounded-lg ${location.gridClass} transform transition-transform duration-300 hover:-translate-y-2`}
+              className={`relative overflow-hidden rounded-lg ${location.gridClass} transform transition-transform duration-300 hover:-translate-y-2 shadow-[0_4px_8px_rgba(0,0,0,0.1)]`}
             >
               <div className="relative w-full h-[361px]">
                 <Image

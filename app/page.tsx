@@ -1,4 +1,5 @@
-import { HomeLoadingFallback } from '@/components/Loading';
+'use client';
+import LoadingSpinner from '@/components/Loading';
 import { Suspense } from 'react';
 import { Brands } from './components/Brands';
 import { Destinations } from './components/Destinations';
@@ -12,7 +13,7 @@ import { Tickets } from './components/Tickets';
 
 export default function Home() {
   return (
-    <Suspense fallback={<HomeLoadingFallback />}>
+    <Suspense fallback={<LoadingSpinner />}>
       <div className="flex flex-col h-full">
         <Header />
         <main className="md:px-20 px-4">
